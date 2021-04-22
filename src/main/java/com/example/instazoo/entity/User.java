@@ -1,6 +1,6 @@
-package com.example.entity;
+package com.example.instazoo.entity;
 
-import com.example.entity.enums.ERole;
+import com.example.instazoo.entity.enums.ERole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import com.example.entity.Post;
 
 @Data
 @Entity

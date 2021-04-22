@@ -13,28 +13,28 @@ import java.util.Set;
 
 @Data
 @Entity
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @Column(unique = true, updatable = true)
+    @Column(name = "user_name", unique = true, updatable = true)
     private String userName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(unique = true)
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(columnDefinition = "text")
+    @Column(name = "bio")
     private String bio;
 
-    @Column(length = 3000)
+    @Column(name = "password", length = 3000)
     private String password;
 
     @ElementCollection(targetClass = ERole.class)

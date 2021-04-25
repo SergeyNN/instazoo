@@ -3,17 +3,16 @@ package com.example.instazoo.entity;
 import com.example.instazoo.entity.enums.ERole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
-public class UserEntity {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,8 +48,57 @@ public class UserEntity {
     @Column(unique = false)
     private LocalDateTime createdDate;
 
+    @Transient
+    private Collection<? extends GrantedAuthority> authorities;
+
     @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDateTime.now();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String userName, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.authorities = authorities;
     }
 }

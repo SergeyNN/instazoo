@@ -1,4 +1,4 @@
-package com.example.instazoo.srvices;
+package com.example.instazoo.services;
 
 import com.example.instazoo.entity.UserEntity;
 import com.example.instazoo.repository.UserRepository;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 import java.util.stream.Collectors;
 

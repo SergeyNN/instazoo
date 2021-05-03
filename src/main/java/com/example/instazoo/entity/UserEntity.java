@@ -41,7 +41,7 @@ public class UserEntity implements UserDetails {
     joinColumns = @JoinColumn(name = "user_id"))
     private Set<ERole> role = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "userEntity", orphanRemoval = true)
     private List<Post> post = new ArrayList<>();
 
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")

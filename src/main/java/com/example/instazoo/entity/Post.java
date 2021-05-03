@@ -27,7 +27,7 @@ public class Post {
     private Set<String> likedUsers = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity user;
+    private UserEntity userEntity;
 
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "post", orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();

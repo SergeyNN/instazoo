@@ -17,7 +17,7 @@
       <button mat-button (click)="fileInput.click()">Pick File</button>
       <button mat-button *ngIf="selectedFile" (click)="onUpload()">Upload</button>
     </div>
-    <div class="col" style="text-align: left">
+    <div class="col" style="text-align: left" *ngIf="user">
 
       <h2>{{user.username}}</h2>
 

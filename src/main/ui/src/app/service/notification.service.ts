@@ -9,7 +9,7 @@ export class NotificationService {
   constructor(private snackbar: MatSnackBar) { }
 
   public showSnackBar(message: string): void {
-    this.snackbar.open(message, null, {
+    this.snackbar.open(message, 'Undo', {
       duration: 2000
     });
   }

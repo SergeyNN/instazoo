@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from '../../models/Post';
 import {User} from '../../models/User';
 import {PostService} from '../../service/post.service';
@@ -10,7 +10,7 @@ import {ImageUploadService} from '../../service/image-upload.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
 
@@ -24,7 +24,8 @@ export class IndexComponent implements OnInit {
               private commentService: CommentService,
               private notificationService: NotificationService,
               private imageService: ImageUploadService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.postService.getAllPosts()
@@ -63,7 +64,7 @@ export class IndexComponent implements OnInit {
   }
 
   likePost(postId: number, postIndex: number): void {
-    const  post = this.posts[postIndex];
+    const post = this.posts[postIndex];
     console.log(post);
 
     if (!post.usersLiked.includes(this.user.username)) {
@@ -83,15 +84,20 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  postComment(message: string, postId: number, postIndex: number): void {
-    const post = this.posts[postIndex];
+  postComment(event: any, postId: number, postIndex: number): void {
+    let message = event.target.value;
+    if (message) {
 
-    console.log(post);
-    this.commentService.addToCommentToPost(postId, message)
-      .subscribe(data => {
-        console.log(data);
-        post.comments.push(data);
-      });
+
+      const post = this.posts[postIndex];
+
+      console.log(post);
+      this.commentService.addToCommentToPost(postId, message)
+        .subscribe(data => {
+          console.log(data);
+          post.comments.push(data);
+        });
+    }
   }
 
   formatImage(img: any): any {

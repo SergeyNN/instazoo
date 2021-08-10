@@ -1,7 +1,7 @@
 package com.example.instazoo.entity;
 
 import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 

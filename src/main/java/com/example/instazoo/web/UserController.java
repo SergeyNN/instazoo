@@ -8,6 +8,7 @@ import com.example.instazoo.validations.ResponseErrorValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class UserController {
     private ResponseErrorValidation responseErrorValidation;
 
     @GetMapping("/")
-    public ResponseEntity<UserDTO> getCurrentUser(Principal principal) {
-        UserEntity user = userService.getCurrentUser(principal);
+    public ResponseEntity<UserDTO> getCurrentUser(@AuthenticationPrincipal UserEntity user) {
+        //UserEntity user = userService.getCurrentUser(principal);
         UserDTO userDTO = userFacade.userToUserDTO(user);
 
         return new ResponseEntity<>(userDTO, HttpStatus.OK);

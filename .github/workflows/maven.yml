@@ -46,5 +46,6 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
     - name: Build with Maven
-      run: mvn clean install -Dspring.datasource.username=postgres -Dspring.datasource.password=postgres -Dspring.datasource.url=jdbc:postgresql://postgres:5432/instazoo -DskipTests  
+      run: mvn clean install
+#       run: mvn clean install -Dspring.datasource.username=postgres -Dspring.datasource.password=postgres -Dspring.datasource.url=jdbc:postgresql://postgres:5432/instazoo -DskipTests  
 #       run: mvn -B package --file pom.xml
